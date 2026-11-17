@@ -1,5 +1,9 @@
 # How to update the portfolio
 
+- Live site: https://portfolio-wine-theta-91.vercel.app
+- GitHub repo: https://github.com/numanmalik999/portfolio
+- Vercel project: "portfolio" — every push to `main` redeploys automatically.
+
 The whole site is one file: `index.html`. All projects live in a list called
 `PROJECTS` near the bottom of that file (search for `const PROJECTS`).
 
