@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numan Malik — Projects</title>
+<meta name="description" content="Portfolio of M Nouman (Numan Malik): healthcare platforms, ERP & POS systems, AI agents and web tools built with React, TypeScript and Supabase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d12; --bg2:#11141b; --card:#151924; --card-h:#1a1f2d; --line:#242a38;
+  --text:#e8ebf2; --muted:#9099ad; --dim:#677087;
+  --accent:#5b8cff; --accent2:#22d3a6;
+  --radius:16px;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f7fb; --bg2:#ffffff; --card:#ffffff; --card-h:#fbfcff; --line:#e3e6ee;
+    --text:#151924; --muted:#5a6377; --dim:#8a92a6; --accent:#3366ff; --accent2:#0ea885;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f7fb; --bg2:#ffffff; --card:#ffffff; --card-h:#fbfcff; --line:#e3e6ee;
+  --text:#151924; --muted:#5a6377; --dim:#8a92a6; --accent:#3366ff; --accent2:#0ea885;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:18px}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:6px;align-items:center}
+.navlinks a,.themebtn{font-size:14px;color:var(--muted);padding:8px 12px;border-radius:10px;border:0;background:none;cursor:pointer;font-family:inherit}
+.navlinks a:hover,.themebtn:hover{color:var(--text);background:var(--card)}
+
+/* hero */
+header.hero{padding:96px 0 72px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:-40% -10% auto auto;width:700px;height:700px;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;position:relative}
+.avatar{width:132px;height:132px;border-radius:50%;border:3px solid var(--line);object-fit:cover}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent2);margin-bottom:14px}
+h1{font-size:clamp(36px,5.5vw,60px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--muted);max-width:640px;margin-top:18px}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--card);transition:.15s}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.1)}
+.btn svg{width:18px;height:18px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* sections */
+section{padding:72px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+h2{font-size:32px;letter-spacing:-.03em;font-weight:800}
+.sub{color:var(--muted);margin-top:6px}
+
+/* featured */
+.featured{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;transition:.2s}
+.feat:hover{border-color:color-mix(in srgb,var(--c) 60%,var(--line));transform:translateY(-2px)}
+.feat::after{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 28%,transparent),transparent)}
+.feat h3{font-size:22px;letter-spacing:-.02em}
+.feat p{color:var(--muted);font-size:15px}
+.feat ul{list-style:none;display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.feat li::before{content:"→ ";color:var(--c)}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:500 13px Inter,sans-serif;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;transition:.15s}
+.chip:hover{color:var(--text)}
+.chip.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.search{font:14px Inter,sans-serif;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);min-width:220px}
+.search:focus{outline:2px solid var(--accent);outline-offset:1px}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:.18s}
+.card:hover{background:var(--card-h);border-color:color-mix(in srgb,var(--c) 55%,var(--line));transform:translateY(-2px)}
+.card-top{display:flex;align-items:center;gap:12px}
+.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:none;background:color-mix(in srgb,var(--c) 16%,transparent);border:1px solid color-mix(in srgb,var(--c) 30%,transparent)}
+.card h3{font-size:17px;letter-spacing:-.01em;line-height:1.25}
+.cat{font-size:12px;color:var(--c);font-weight:600}
+.card p{font-size:14px;color:var(--muted);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:500 11.5px "JetBrains Mono",monospace;padding:4px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.links{display:flex;gap:8px;flex-wrap:wrap;padding-top:4px;border-top:1px solid var(--line);margin-top:2px;padding-top:14px}
+.lnk{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:9px;border:1px solid var(--line)}
+.lnk:hover{border-color:var(--c);color:var(--c)}
+.lnk.live{background:color-mix(in srgb,var(--c) 14%,transparent);border-color:color-mix(in srgb,var(--c) 35%,transparent);color:var(--c)}
+.lnk svg{width:14px;height:14px}
+.badge{font-size:11px;color:var(--dim);margin-left:auto;align-self:center}
+.empty{color:var(--muted);padding:40px 0;text-align:center;display:none}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.skill h4{font-size:15px;margin-bottom:12px}
+.skill .tags{gap:8px}
+.skill .tag{font-size:12.5px;padding:6px 10px}
+
+/* contact */
+.contact{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 18%,var(--card)),var(--card));border:1px solid var(--line);border-radius:24px;padding:48px;text-align:center}
+.contact p{color:var(--muted);max-width:520px;margin:12px auto 24px}
+.contact .cta{justify-content:center}
+footer{padding:32px 0 48px;color:var(--dim);font-size:13px;text-align:center}
+
+@media (max-width:960px){.grid,.skills{grid-template-columns:repeat(2,1fr)}.featured{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .grid,.skills{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .avatar{width:96px;height:96px}
+  header.hero{padding:56px 0 48px}
+  .navlinks a.hide-sm{display:none}
+  .contact{padding:32px 20px}
+  .search{min-width:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">numan<span>.</span>dev</a>
+    <div class="navlinks">
+      <a href="#featured" class="hide-sm">Featured</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="themebtn" id="themeBtn" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/200127670?v=4" alt="M Nouman">
+      <div>
+        <div class="eyebrow">// software engineer &amp; founder</div>
+        <h1>Hi, I'm Numan.<br>I build <span class="grad">software that runs businesses.</span></h1>
+        <p class="lead">Healthcare platforms, ZATCA-compliant ERP &amp; POS systems, WhatsApp AI agents and handy web tools — shipped to real users in Saudi Arabia, Pakistan and beyond.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View projects ↓</a>
+          <a class="btn" href="https://github.com/numanmalik999" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statProjects">–</b><span>Projects shipped</span></div>
+      <div class="stat"><b id="statLive">–</b><span>Live web apps</span></div>
+      <div class="stat"><b>3</b><span>Desktop apps (Electron)</span></div>
+      <div class="stat"><b>KSA · PK</b><span>Markets served</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="featured">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Featured work</h2><p class="sub">Flagship products running in production.</p></div></div>
+    <div class="featured" id="featuredGrid"></div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>All projects</h2><p class="sub">Everything on my GitHub, with links to the live apps.</p></div>
+      <input class="search" id="search" type="search" placeholder="Search projects or tech…" aria-label="Search projects">
+    </div>
+    <div class="filters" id="filters" style="margin-bottom:24px"></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">No projects match that search.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Toolkit</h2><p class="sub">What I reach for when building.</p></div></div>
+    <div class="skills">
+      <div class="skill"><h4>Frontend</h4><div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Astro</span><span class="tag">Tailwind</span><span class="tag">shadcn/ui</span><span class="tag">Flutter / Dart</span></div></div>
+      <div class="skill"><h4>Backend &amp; data</h4><div class="tags"><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Edge Functions</span><span class="tag">Node.js</span><span class="tag">Deno</span><span class="tag">RLS</span></div></div>
+      <div class="skill"><h4>AI, desktop &amp; ops</h4><div class="tags"><span class="tag">Gemini</span><span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">WhatsApp Cloud API</span><span class="tag">Electron</span><span class="tag">Vercel</span><span class="tag">Stripe</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Let's build something.</h2>
+      <p>Need an ERP, a clinical platform, or an AI agent for your business? I'd love to hear about it.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:numan_malik999@yahoo.com">✉ Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/drmnouman" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/numanmalik999" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> M Nouman · Built with plain HTML, hosted on Vercel</footer>
+
+<script>
+const GH = "https://github.com/numanmalik999/";
+const CATS = {
+  health:{label:"Healthcare", c:"#22d3a6"},
+  erp:{label:"ERP & POS", c:"#5b8cff"},
+  ai:{label:"AI & Automation", c:"#b07cff"},
+  loyalty:{label:"Loyalty & SaaS", c:"#ff9f43"},
+  tools:{label:"Tools & Utilities", c:"#f6c945"},
+  web:{label:"Web & Games", c:"#ff6b8b"},
+};
+
+// repo: GitHub repo name (only public repos get a code link). live: Vercel production URL.
+const PROJECTS = [
+  {name:"StudyPrometric", icon:"🩺", cat:"health", featured:true,
+   desc:"Medical licensing exam prep for SMLE, DHA, MOH, HAAD, OMSB and QCHP — mock exams, AI clinical tutor with hybrid RAG search, 25+ clinical calculators and an offline Android companion.",
+   points:["Hybrid pgvector + full-text RAG engine","73 Supabase Edge Functions & daily MCQ pipeline","Astro for SEO, React SPA for the app"],
+   tags:["Astro","React","Supabase","pgvector","AI"], live:"https://www.studyprometric.com"},
+  {name:"PharmaSys ERP", icon:"💊", cat:"erp", featured:true,
+   desc:"Cloud ERP & POS for pharmacies in Saudi Arabia — ZATCA Phase 2 e-invoicing, SFDA RSD tracking, batch & expiry inventory and multi-tenant subdomains. Ships as web + Windows desktop.",
+   points:["Server-side ZATCA XML signing","Multi-tenant: every pharmacy on its own subdomain","Electron desktop app with auto-updates"],
+   tags:["React","Vite","Electron","Supabase","ZATCA"], live:"https://pharmasys.site", repo:"pharmasys-releases", repoLabel:"Downloads"},
+  {name:"OmniBiz ERP (Baqala)", icon:"🛒", cat:"erp", featured:true,
+   desc:"Multi-business ERP & POS for Saudi grocery stores, superstores and retail. ZATCA Phase 2 compliant, cloud-synced, with Windows installer and portable builds.",
+   points:["ZATCA Fatoora e-invoicing","Multi-tenant cloud + offline desktop","Public installer & release channel"],
+   tags:["React","Electron","Supabase","POS"], live:"https://baqala-umber.vercel.app", repo:"baqala-release", repoLabel:"Downloads"},
+  {name:"StaffChat AI", icon:"🤖", cat:"ai", featured:true,
+   desc:"Multi-tenant WhatsApp AI agent platform: Gemini answers customers 24/7 from each business's own PDFs, with instant human takeover from a live staff console.",
+   points:["Gemini + pgvector hybrid RAG knowledge base","Meta WhatsApp Cloud API, SSE live dashboard","Built-in WhatsApp simulator for testing"],
+   tags:["TypeScript","Gemini","WhatsApp API","Supabase"], live:"https://hospital-whatsapp-bot.vercel.app"},
+
+  {name:"Dawaa HMS", icon:"🏥", cat:"health",
+   desc:"Hospital management system & pharmacy ERP for Pakistan — IPD wards, OPD token queues, doctor EMR, lab diagnostics and retail pharmacy POS. Cloud + offline desktop.",
+   tags:["React","Supabase","Electron"], live:"https://pak.pharmasys.site", repo:"dawaa-hms-releases", repoLabel:"Downloads"},
+  {name:"PharmaSys Marketplace", icon:"🌐", cat:"health",
+   desc:"Public medicine search & price comparison across pharmacies on the PharmaSys network, with per-pharmacy storefronts on subdomains.",
+   tags:["Astro","React","Supabase","Tailwind"], live:"https://marketplace.pharmasys.site"},
+  {name:"MedResearch AI", icon:"🔬", cat:"ai",
+   desc:"AI-assisted medical literature search: query research topics and get summarized, structured result cards.",
+   tags:["React","TypeScript","AI"]},
+  {name:"KDP Book Builder", icon:"📚", cat:"ai",
+   desc:"Create AI-generated coloring books, mazes, tracing sheets and storybooks ready to publish on Amazon KDP. Bring your own OpenAI or Gemini key; Stripe subscriptions.",
+   tags:["React","OpenAI","Gemini","Stripe"], live:"https://kdp-one.vercel.app", repo:"kdp-image-maker"},
+  {name:"PrintMyna", icon:"🖨️", cat:"tools",
+   desc:"Local-first print shop app for Windows: customers send documents over WhatsApp, staff preview, approve and print — plus a WhatsApp inbox for replies.",
+   tags:["Electron","React","WhatsApp API"]},
+
+  {name:"TurboWash", icon:"🚗", cat:"loyalty",
+   desc:"Offline-first digital loyalty cards and QR wash scanning for car wash businesses, engineered for fast counter operation.",
+   tags:["Next.js","TypeScript","QR"], live:"https://card-system-for-car-wash.vercel.app"},
+  {name:"Car Wash Loyalty", icon:"🧽", cat:"loyalty",
+   desc:"Rewards management for car washes — customers collect visits, staff redeem free washes.",
+   tags:["Next.js","TypeScript"], live:"https://car-wash-ebon.vercel.app"},
+  {name:"Nouf Land Loyalty", icon:"🎁", cat:"loyalty",
+   desc:"Points-based loyalty program for a grocery store: customers earn points on every purchase.",
+   tags:["Next.js","TypeScript"], live:"https://loyalty-xi-flame.vercel.app"},
+  {name:"QR SaaS Platform", icon:"🔳", cat:"loyalty",
+   desc:"Professional QR code management platform — create, manage and track dynamic QR codes.",
+   tags:["Next.js","TypeScript","SaaS"], live:"https://qr-generator-vert-nu.vercel.app"},
+
+  {name:"ScanForge", icon:"🏷️", cat:"tools",
+   desc:"Free barcode & QR label designer with a live canvas, batch spreadsheet printing, dozens of symbologies and offline rendering. Web + desktop.",
+   tags:["JavaScript","Electron","Barcodes"], live:"https://barcode-designer-ecru.vercel.app", repo:"barcode-designer"},
+  {name:"Zakat Calculator", icon:"🌙", cat:"tools",
+   desc:"Shariah-compliant zakat calculator with live 24K gold & silver nisab rates, four madhhab rule sets and zero tracking.",
+   tags:["Flutter","Dart"], live:"https://zakat-calculator-eta.vercel.app"},
+  {name:"VideoClip", icon:"🎬", cat:"tools",
+   desc:"Self-hosted video & audio downloader: paste links from TikTok, Instagram, X and 1000+ sites, save as MP4 or MP3, bulk downloads.",
+   tags:["Python","yt-dlp","HTML"], live:"https://video-downloader-eta-two.vercel.app"},
+  {name:"Pakistan Bill Checker", icon:"⚡", cat:"tools",
+   desc:"Check and download Pakistani electricity bills online from one simple page.",
+   tags:["React","TypeScript"]},
+
+  {name:"Tile Race Master", icon:"🎲", cat:"web",
+   desc:"Two-player tile-reveal strategy game — match your theme and escape first. Includes a leaderboard.",
+   tags:["React","Express","TypeScript"], live:"https://tile-race-master.vercel.app"},
+  {name:"Iron Forge", icon:"🏭", cat:"web",
+   desc:"Company website for an iron manufacturing business with product catalog, inquiry form and admin CMS.",
+   tags:["React","shadcn/ui","Supabase"], live:"https://iron-forge-lime.vercel.app"},
+  {name:"Breathin", icon:"👃", cat:"web",
+   desc:"E-commerce storefront for magnetic nasal strips — product pages, cart, checkout and admin panel.",
+   tags:["React","TypeScript","E-commerce"], live:"https://breathin-eight.vercel.app", repo:"Breath-In"},
+];
+
+const ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>';
+const gh = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>';
+const host = u => u.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'');
+
+function links(p){
+  let h = '';
+  if(p.live) h += `<a class="lnk live" href="${p.live}" target="_blank" rel="noopener">${ext} ${host(p.live)}</a>`;
+  if(p.repo) h += `<a class="lnk" href="${GH+p.repo}" target="_blank" rel="noopener">${gh} ${p.repoLabel||'Code'}</a>`;
+  if(!p.live && !p.repo) h += `<span class="badge">Private project · demo on request</span>`;
+  return h;
+}
+
+document.getElementById('featuredGrid').innerHTML = PROJECTS.filter(p=>p.featured).map(p=>`
+  <article class="feat" style="--c:${CATS[p.cat].c}">
+    <div class="card-top"><div class="icon">${p.icon}</div><div><div class="cat">${CATS[p.cat].label}</div><h3>${p.name}</h3></div></div>
+    <p>${p.desc}</p>
+    <ul>${p.points.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div class="links">${links(p)}</div>
+  </article>`).join('');
+
+let cat = 'all', q = '';
+const filters = document.getElementById('filters');
+filters.innerHTML = [['all',`All (${PROJECTS.length})`],...Object.entries(CATS).map(([k,v])=>[k,`${v.label} (${PROJECTS.filter(p=>p.cat===k).length})`])]
+  .map(([k,l])=>`<button class="chip${k==='all'?' on':''}" data-k="${k}">${l}</button>`).join('');
+filters.addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b) return;
+  cat=b.dataset.k; filters.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b)); render();
+});
+document.getElementById('search').addEventListener('input',e=>{q=e.target.value.toLowerCase().trim();render();});
+
+function render(){
+  const list = PROJECTS.filter(p=>(cat==='all'||p.cat===cat) &&
+    (!q || (p.name+' '+p.desc+' '+p.tags.join(' ')).toLowerCase().includes(q)));
+  document.getElementById('grid').innerHTML = list.map(p=>`
+    <article class="card" style="--c:${CATS[p.cat].c}">
+      <div class="card-top"><div class="icon">${p.icon}</div><div><div class="cat">${CATS[p.cat].label}</div><h3>${p.name}</h3></div></div>
+      <p>${p.desc}</p>
+      <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="links">${links(p)}</div>
+    </article>`).join('');
+  document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+}
+render();
+
+document.getElementById('statProjects').textContent = PROJECTS.length;
+document.getElementById('statLive').textContent = PROJECTS.filter(p=>p.live).length;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const root=document.documentElement;
+try{const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t;}catch(e){}
+document.getElementById('themeBtn').onclick=()=>{
+  const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme = dark ? 'light' : 'dark';
+  try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}
+};
+</script>
+</body>
+</html>
